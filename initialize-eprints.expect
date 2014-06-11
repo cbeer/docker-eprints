@@ -1,0 +1,47 @@
+spawn /usr/share/eprints3/bin/epadmin config_db test1
+
+expect "Database Name "
+send "\r"
+
+expect "MySQL Host"
+send "$env(MYSQL_PORT_3306_TCP_ADDR)\r"
+
+expect "MySQL Port (# for no setting)"
+send "$env(MYSQL_PORT_3306_TCP_PORT)\r"
+
+expect "MySQL Socket (# for no setting) "
+send "\r"
+
+expect "Database User"
+send "root\r"
+
+expect "Database Password"
+send "$env(MYSQL_ROOT_PASSWORD)\r"
+
+expect "Write these database settings?"
+send "\r"
+
+expect "Create database"
+send "\r"
+
+expect "Database Superuser Username"
+send "\r"
+
+expect "Database Superuser Password?"
+send "$env(MYSQL_ROOT_PASSWORD)\r"
+
+spawn /usr/share/eprints3/bin/epadmin create_tables test1
+
+spawn /usr/share/eprints3/bin/epadmin create_user test1
+
+expect "Enter a username"
+send "\r"
+
+expect "Select a user type"
+send "admin\r"
+
+expect "Enter Password?"
+send "admin\r"
+
+expect "Email"
+send "admin@localhost\r"

@@ -1,0 +1,46 @@
+spawn /usr/share/eprints3/bin/epadmin create
+
+expect "Archive ID?"
+send "test1\r"
+
+expect "Configure vital settings?"
+send "\r"
+
+expect "Hostname?"
+send "eprints.docker.local\r"
+
+expect "Webserver Port"
+send "\r"
+
+expect "Alias (enter # when done)"
+send "\r"
+
+expect "Path"
+send "\r"
+
+expect "HTTPS Hostname"
+send "\r"
+
+expect "Administrator Email?"
+send "archivist1@example.com\r"
+
+expect "Archive Name"
+send "\r"
+
+expect "Write these core settings?"
+send "\r"
+
+expect "Configure database"
+send "no\r"
+
+expect "Create an initial user?"
+send "no\r"
+
+expect "Do you want to build the static web pages?"
+send "no\r"
+
+expect "Do you want to import the LOC subjects?"
+send "no\r"
+
+expect -re "Do you want to update the apache config files\?\[^\?\]*\?"
+send "yes\r"
